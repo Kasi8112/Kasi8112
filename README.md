@@ -6,6 +6,9 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
 ![AVR](https://img.shields.io/badge/AVR-000000?style=for-the-badge)
+![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=for-the-badge&logo=raspberrypi&logoColor=white)
+![Blender](https://img.shields.io/badge/Blender-F5792A?style=for-the-badge&logo=blender&logoColor=white)
+![Fusion 360](https://img.shields.io/badge/Fusion%20360-FF6C00?style=for-the-badge&logo=autodesk&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
 ---
@@ -32,7 +35,7 @@
 ---
 
 ## Projects
-- LCD Interface (AVR): Low-level control of a 16x2 LCD  
+- LCD Interface (AVR): Low-level LCD control  
 - Button Interface: Input handling using pull-up resistors  
 - Arduino Experiments: Microcontroller-based projects  
 
@@ -42,3 +45,8 @@
 - Embedded systems  
 - Low-level programming  
 - Hardware-software integration  
+
+---
+
+## Philosophy
+> "He who has a why to live can bear almost any how."
