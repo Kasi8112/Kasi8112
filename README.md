@@ -1,48 +1,69 @@
+````md
 ![typing](https://readme-typing-svg.herokuapp.com?color=00FF00&size=18&lines=booting+kasi...;initializing+systems...;loading+modules...;ready.)
-# $ whoami
 
-> kasi8112@github  
-> embedded systems | low-level programming | AI exploration  
+```bash
+┌──────────────────────────────────────────────┐
+│  kasi8112@github:~$ whoami                  │
+└──────────────────────────────────────────────┘
+> embedded systems | low-level programming | system-level thinking
+````
 
----
-
-## $ cat about.txt
-
-- I build with **C, C++, Python, and AVR/Arduino**
+```bash
+┌──────────────────────────────────────────────┐
+│  kasi8112@github:~$ cat about.txt           │
+└──────────────────────────────────────────────┘
+- I build with C, C++, Python, and AVR/Arduino
 - Interested in how systems work at the lowest level
-- Exploring the intersection of hardware and intelligence
-- Strong focus on logic, computation, and system design
+- Exploring hardware + intelligence
+- Focused on logic, computation, system design
+```
 
----
+```bash
+┌──────────────────────────────────────────────┐
+│  kasi8112@github:~$ ls skills/              │
+└──────────────────────────────────────────────┘
+C   C++   Python
+AVR-GCC   Arduino
+Embedded Systems   Git
+```
 
-## $ ls skills/
+```bash
+┌──────────────────────────────────────────────┐
+│  kasi8112@github:~$ cat projects.log        │
+└──────────────────────────────────────────────┘
+- LCD Interface (AVR) → low-level LCD control
+- Button Interface → input handling with pull-ups
+- Arduino experiments (ongoing)
+```
 
-C  •  C++  •  Python  
-AVR-GCC  •  Arduino  
-Embedded Systems  •  Git  
+```bash
+┌──────────────────────────────────────────────┐
+│  kasi8112@github:~$ stats --full            │
+└──────────────────────────────────────────────┘
+```
 
----
+![stats](https://github-readme-stats.vercel.app/api?username=kasi8112\&show_icons=true\&theme=github_dark\&hide_border=true\&bg_color=00000000)
 
-## $ cat projects.log
+![streak](https://streak-stats.demolab.com?user=kasi8112\&theme=github-dark\&hide_border=true\&background=00000000)
 
-- [LCD Interface - AVR](https://github.com/kasi8112/YOUR_REPO)
-- [Button Interface (Pull-up Logic)](https://github.com/kasi8112/YOUR_REPO)
-- Arduino experiments (coming soon)
+![langs](https://github-readme-stats.vercel.app/api/top-langs/?username=kasi8112\&layout=compact\&theme=github_dark\&hide_border=true\&bg_color=00000000)
 
----
+```bash
+┌──────────────────────────────────────────────┐
+│  kasi8112@github:~$ activity --graph        │
+└──────────────────────────────────────────────┘
+```
 
-## $ stats --view
+![activity](https://github-readme-activity-graph.vercel.app/graph?username=kasi8112\&theme=github-dark\&bg_color=00000000\&hide_border=true)
 
-![stats](https://github-readme-stats.vercel.app/api?username=kasi8112&show_icons=true&theme=github_dark&hide_border=true&bg_color=00000000)
+````bash
+┌──────────────────────────────────────────────┐
+│  kasi8112@github:~$ echo "philosophy"       │
+└──────────────────────────────────────────────┘
+"He who has a why to live can bear almost any how."
 
-![langs](https://github-readme-stats.vercel.app/api/top-langs/?username=kasi8112&layout=compact&theme=github_dark&hide_border=true&bg_color=00000000)
-
----
-
-## $ echo "philosophy"
-
-> "He who has a why to live can bear almost any how."
-
----
-
-## $ exit
+```bash
+┌──────────────────────────────────────────────┐
+│  kasi8112@github:~$ exit                   │
+└──────────────────────────────────────────────┘
+````
