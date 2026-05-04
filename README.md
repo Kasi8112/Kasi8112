@@ -52,11 +52,4 @@
 ---
 
 ## Philosophy
-> "He who has a why to live can bear almost any how."- Embedded systems  
-- Low-level programming  
-- Hardware-software integration  
-
----
-
-## Philosophy
 > "He who has a why to live can bear almost any how."
