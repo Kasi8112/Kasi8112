@@ -38,9 +38,9 @@
 ---
 
 ## Projects
-- LCD Interface (AVR): Low-level LCD control  
-- Button Interface: Input handling using pull-up resistors  
-- Arduino Experiments: Microcontroller-based projects  
+<!--START_PROJECTS-->
+- Loading projects...
+<!--END_PROJECTS-->
 
 ---
 
