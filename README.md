@@ -1,16 +1,47 @@
-## Hi there 👋
+```md
+# $ whoami
 
-<!--
-**Kasi8112/Kasi8112** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+> kasi@github
+> embedded systems | low-level programming | AI exploration
 
-Here are some ideas to get you started:
+---
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## $ cat about.txt
+
+- I build with **C & AVR**
+- Interested in how systems work at the lowest level
+- Exploring the intersection of hardware and intelligence
+- Philosophy-driven thinking (Nietzsche, Camus)
+
+---
+
+## $ ls skills/
+
+`C` `AVR-GCC` `Embedded Systems` `Git` `Problem Solving`
+
+---
+
+## $ cat projects.log
+
+- [LCD Interface - AVR](#)
+- [Button Interface (Pull-up Logic)](#)
+- More coming...
+
+---
+
+## $ stats --view
+
+![stats](https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=github_dark&hide_border=true&bg_color=00000000)
+
+![langs](https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=github_dark&hide_border=true&bg_color=00000000)
+
+---
+
+## $ echo "philosophy"
+
+> "He who has a why to live can bear almost any how."
+
+---
+
+## $ exit
+```
