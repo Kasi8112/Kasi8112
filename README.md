@@ -1,3 +1,4 @@
+![typing](https://readme-typing-svg.herokuapp.com?color=00FF00&size=18&lines=booting+kasi...;initializing+systems...;loading+modules...;ready.)
 # $ whoami
 
 > kasi8112@github  
