@@ -1,15 +1,62 @@
 # Kasi
 
 ## Tech Stack
-![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
-![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)
-![AVR](https://img.shields.io/badge/AVR-000000?style=for-the-badge)
-![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=for-the-badge&logo=raspberrypi&logoColor=white)
-![Blender](https://img.shields.io/badge/Blender-F5792A?style=for-the-badge&logo=blender&logoColor=white)
-![Fusion 360](https://img.shields.io/badge/Fusion%20360-FF6C00?style=for-the-badge&logo=autodesk&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+
+<table>
+<tr>
+<td align="center">
+
+![C](https://img.shields.io/badge/C-00599C?style=flat&logo=c&logoColor=white)
+
+</td>
+<td align="center">
+
+![C++](https://img.shields.io/badge/C++-00599C?style=flat&logo=cplusplus&logoColor=white)
+
+</td>
+<td align="center">
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+
+</td>
+</tr>
+
+<tr>
+<td align="center">
+
+![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat&logo=arduino&logoColor=white)
+
+</td>
+<td align="center">
+
+![AVR](https://img.shields.io/badge/AVR-000000?style=flat)
+
+</td>
+<td align="center">
+
+![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=flat&logo=raspberrypi&logoColor=white)
+
+</td>
+</tr>
+
+<tr>
+<td align="center">
+
+![Blender](https://img.shields.io/badge/Blender-F5792A?style=flat&logo=blender&logoColor=white)
+
+</td>
+<td align="center">
+
+![Fusion 360](https://img.shields.io/badge/Fusion%20360-FF6C00?style=flat&logo=autodesk&logoColor=white)
+
+</td>
+<td align="center">
+
+![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
+
+</td>
+</tr>
+</table>
 
 ---
 
