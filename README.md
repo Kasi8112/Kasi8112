@@ -2,61 +2,23 @@
 
 ## Tech Stack
 
-<table>
-<tr>
-<td align="center">
+<p align="center">
+  <img src="https://img.shields.io/badge/C-00599C?style=flat&logo=c&logoColor=white" height="28"/>
+  <img src="https://img.shields.io/badge/C++-00599C?style=flat&logo=cplusplus&logoColor=white" height="28"/>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" height="28"/>
+</p>
 
-![C](https://img.shields.io/badge/C-00599C?style=flat&logo=c&logoColor=white)
+<p align="center">
+  <img src="https://img.shields.io/badge/Arduino-00979D?style=flat&logo=arduino&logoColor=white" height="28"/>
+  <img src="https://img.shields.io/badge/AVR-000000?style=flat" height="28"/>
+  <img src="https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=flat&logo=raspberrypi&logoColor=white" height="28"/>
+</p>
 
-</td>
-<td align="center">
-
-![C++](https://img.shields.io/badge/C++-00599C?style=flat&logo=cplusplus&logoColor=white)
-
-</td>
-<td align="center">
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-
-</td>
-</tr>
-
-<tr>
-<td align="center">
-
-![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat&logo=arduino&logoColor=white)
-
-</td>
-<td align="center">
-
-![AVR](https://img.shields.io/badge/AVR-000000?style=flat)
-
-</td>
-<td align="center">
-
-![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=flat&logo=raspberrypi&logoColor=white)
-
-</td>
-</tr>
-
-<tr>
-<td align="center">
-
-![Blender](https://img.shields.io/badge/Blender-F5792A?style=flat&logo=blender&logoColor=white)
-
-</td>
-<td align="center">
-
-![Fusion 360](https://img.shields.io/badge/Fusion%20360-FF6C00?style=flat&logo=autodesk&logoColor=white)
-
-</td>
-<td align="center">
-
-![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
-
-</td>
-</tr>
-</table>
+<p align="center">
+  <img src="https://img.shields.io/badge/Blender-F5792A?style=flat&logo=blender&logoColor=white" height="28"/>
+  <img src="https://img.shields.io/badge/Fusion%20360-FF6C00?style=flat&logo=autodesk&logoColor=white" height="28"/>
+  <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white" height="28"/>
+</p>
 
 ---
 
