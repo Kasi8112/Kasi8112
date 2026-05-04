@@ -1,12 +1,5 @@
-```md id="cleanpro1"
+```md id="prolayout1"
 # Kasi
-
-## About
-- Embedded systems and low-level programming
-- Experience with C, C++, Python, AVR, and Arduino
-- Interested in system design, computation, and hardware-software interaction
-
----
 
 ## Tech Stack
 ![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
@@ -19,28 +12,35 @@
 ---
 
 ## GitHub Stats
-![Stats](https://github-readme-stats.vercel.app/api?username=kasi8112&show_icons=true&theme=default&hide_border=true)
 
-![Streak](https://streak-stats.demolab.com?user=kasi8112&theme=default&hide_border=true)
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=kasi8112&show_icons=true&hide_border=true" height="160"/>
+  <img src="https://streak-stats.demolab.com?user=kasi8112&hide_border=true" height="160"/>
+</p>
 
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=kasi8112&layout=compact&theme=default&hide_border=true)
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=kasi8112&layout=compact&hide_border=true" height="140"/>
+</p>
 
 ---
 
 ## Activity
-![Graph](https://github-readme-activity-graph.vercel.app/graph?username=kasi8112&theme=github-compact&hide_border=true)
+
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=kasi8112&hide_border=true" />
+</p>
 
 ---
 
 ## Projects
-- LCD Interface (AVR): Low-level control of 16x2 LCD without external libraries  
-- Button Interface: Reliable input handling using internal pull-up resistors  
-- Arduino Experiments: Ongoing microcontroller-based projects
+- LCD Interface (AVR): Low-level LCD control  
+- Button Interface: Input handling using pull-ups  
+- Arduino Experiments: Microcontroller-based projects  
 
 ---
 
 ## Focus
-- Embedded systems development  
-- Low-level programming and optimization  
+- Embedded systems  
+- Low-level programming  
 - Hardware-software integration
 ```
