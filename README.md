@@ -1,7 +1,7 @@
 ```md
 # $ whoami
 
-> kasi@github
+> Kasi8112@github
 > embedded systems | low-level programming | AI exploration
 
 ---
