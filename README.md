@@ -6,15 +6,9 @@
   <img src="https://img.shields.io/badge/C-00599C?style=flat&logo=c&logoColor=white" height="28"/>
   <img src="https://img.shields.io/badge/C++-00599C?style=flat&logo=cplusplus&logoColor=white" height="28"/>
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" height="28"/>
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/badge/Arduino-00979D?style=flat&logo=arduino&logoColor=white" height="28"/>
   <img src="https://img.shields.io/badge/AVR-000000?style=flat" height="28"/>
   <img src="https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=flat&logo=raspberrypi&logoColor=white" height="28"/>
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/badge/Blender-F5792A?style=flat&logo=blender&logoColor=white" height="28"/>
   <img src="https://img.shields.io/badge/Fusion%20360-FF6C00?style=flat&logo=autodesk&logoColor=white" height="28"/>
   <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white" height="28"/>
@@ -52,6 +46,13 @@
 
 ## Focus
 - Embedded systems  
+- Low-level programming  
+- Hardware-software integration  
+
+---
+
+## Philosophy
+> "He who has a why to live can bear almost any how."- Embedded systems  
 - Low-level programming  
 - Hardware-software integration  
 
