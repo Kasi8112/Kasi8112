@@ -16,15 +16,16 @@ jobs:
       - name: Install jq
         run: sudo apt-get install jq
 
-      - name: Fetch latest projects
+      - name: Fetch repos
         run: |
-          curl -s https://api.github.com/users/kasi8112/repos \
-          | jq -r '
-            sort_by(-.pushed_at)
-            | map(select(.fork == false))
-            | .[:6]
-            | .[]
-            | "- [" + .name + "](" + .html_url + "): " + (.description // "No description")
+          curl -s https://api.github.com/users/kasi8112/repos > repos.json
+
+          cat repos.json | jq -r '
+          sort_by(-.pushed_at)
+          | map(select(.fork == false))
+          | .[:5]
+          | .[]
+          | "- [" + .name + "](" + .html_url + "): " + (.description // "No description")
           ' > projects.txt
 
       - name: Inject into README
