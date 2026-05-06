@@ -1,0 +1,45 @@
+name: Update README Projects
+
+on:
+  push:
+  schedule:
+    - cron: "0 */6 * * *"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install jq
+        run: sudo apt-get install jq
+
+      - name: Fetch latest projects
+        run: |
+          curl -s https://api.github.com/users/kasi8112/repos \
+          | jq -r '
+            sort_by(-.pushed_at)
+            | map(select(.fork == false))
+            | .[:6]
+            | .[]
+            | "- [" + .name + "](" + .html_url + "): " + (.description // "No description")
+          ' > projects.txt
+
+      - name: Inject into README
+        run: |
+          awk '
+          /<!--START_PROJECTS-->/ {print; system("cat projects.txt"); next}
+          /<!--END_PROJECTS-->/ {print; next}
+          !/<!--START_PROJECTS-->/ && !/<!--END_PROJECTS-->/
+          ' README.md > temp.md
+          mv temp.md README.md
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add README.md
+          git commit -m "Auto update projects" || echo "No changes"
+          git push
