@@ -39,6 +39,8 @@
 
 ## Projects
 <!--START_PROJECTS-->
+- [Kasi8112](https://github.com/Kasi8112/Kasi8112): No description
+- [AVR-Projects](https://github.com/Kasi8112/AVR-Projects): Contains the projects developed using AVR microcontrollers
 - Loading projects...
 <!--END_PROJECTS-->
 
