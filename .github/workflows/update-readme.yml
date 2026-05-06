@@ -28,7 +28,7 @@ jobs:
           fi
 
           jq -r '
-            sort_by(-.pushed_at)
+            sort_by(.pushed_at) | reverse
             | map(select(.fork == false))
             | .[:5]
             | .[]
