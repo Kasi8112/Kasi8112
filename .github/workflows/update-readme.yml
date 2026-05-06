@@ -11,16 +11,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Fetch repos safely
+      - name: Fetch repos
         run: |
-          curl -s https://api.github.com/users/kasi8112/repos > repos.json
-          jq '.' repos.json > /dev/null || (echo "Invalid JSON" && exit 1)
+          set -e
+          curl -s https://api.github.com/users/kasi8112/repos -o repos.json
+
+          if [ ! -s repos.json ]; then
+            echo "API returned empty response"
+            exit 1
+          fi
 
           jq -r '
             sort_by(-.pushed_at)
@@ -30,8 +35,9 @@ jobs:
             | "- [" + .name + "](" + .html_url + "): " + (.description // "No description")
           ' repos.json > projects.txt
 
-      - name: Replace README section
+      - name: Update README
         run: |
+          set -e
           awk '
           /<!--START_PROJECTS-->/ {
             print;
@@ -39,7 +45,7 @@ jobs:
             next
           }
           /<!--END_PROJECTS-->/ {print; next}
-          !/<!--START_PROJECTS-->/ && !/<!--END_PROJECTS-->/
+          {print}
           ' README.md > new.md
 
           mv new.md README.md
