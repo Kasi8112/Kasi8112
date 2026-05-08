@@ -10,7 +10,6 @@ jobs:
 update:
 runs-on: ubuntu-latest
 
-```
 permissions:
   contents: write
 
