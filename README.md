@@ -1,39 +1,62 @@
 name: Update README Projects
 
 on:
-push:
-schedule:
-- cron: "0 */6 * * *"
-workflow_dispatch:
+  push:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
 
 jobs:
-update:
-runs-on: ubuntu-latest
+  update:
+    runs-on: ubuntu-latest
 
-permissions:
-  contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-steps:
-  - name: Checkout
-    uses: actions/checkout@v4
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
 
-  - name: Install jq
-    run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Fetch repos
+        run: |
+          set -e
+          curl -s https://api.github.com/users/kasi8112/repos -o repos.json
 
-  - name: Fetch repositories
-    run: |
-      set -e
+          if [ ! -s repos.json ]; then
+            echo "API returned empty response"
+            exit 1
+          fi
 
-      curl -s https://api.github.com/users/kasi8112/repos -o repos.json
+          jq -r '
+            sort_by(.pushed_at) | reverse
+            | map(select(.fork == false))
+            | .[:5]
+            | .[]
+            | "- [" + .name + "](" + .html_url + "): " + (.description // "No description")
+          ' repos.json > projects.txt
 
-      jq -r '
-        sort_by(.pushed_at)
-        | reverse
-        | map(select(.fork == false))
-        | (
-            map(select(.name != "kasi8112"))[:5]
-            + map(select(.name == "kasi8112"))
-          )
+      - name: Update README
+        run: |
+          set -e
+          awk '
+          /<!--START_PROJECTS-->/ {
+            print;
+            while ((getline line < "projects.txt") > 0) print line;
+            next
+          }
+          /<!--END_PROJECTS-->/ {print; next}
+          {print}
+          ' README.md > new.md
+
+          mv new.md README.md
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add README.md
+          git commit -m "Auto update projects" || echo "No changes"
+          git push          )
         | unique_by(.name)
         | .[]
         | "- [" + .name + "](" + .html_url + "): " + (.description // "No description")
@@ -45,8 +68,8 @@ steps:
       BEGIN {inside=0}
 
       /<!--START_PROJECTS-->/ {
-- [Kasi8112](https://github.com/Kasi8112/Kasi8112): No description
 - [AVR-Projects](https://github.com/Kasi8112/AVR-Projects): Contains the projects developed using AVR microcontrollers
+- [Kasi8112](https://github.com/Kasi8112/Kasi8112): Dashboard
         print
         while ((getline line < "projects.txt") > 0)
           print line
