@@ -1,96 +1,65 @@
 name: Update README Projects
 
 on:
-  push:
-  schedule:
-    - cron: "0 */6 * * *"
-  workflow_dispatch:
+push:
+schedule:
+- cron: "0 */6 * * *"
+workflow_dispatch:
 
 jobs:
-  update:
-    runs-on: ubuntu-latest
+update:
+runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+```
+permissions:
+  contents: write
 
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
+steps:
+  - name: Checkout
+    uses: actions/checkout@v4
 
-      - name: Fetch repos
-        run: |
-          set -e
-          curl -s https://api.github.com/users/kasi8112/repos -o repos.json
+  - name: Install jq
+    run: sudo apt-get update && sudo apt-get install -y jq
 
-          if [ ! -s repos.json ]; then
-            echo "API returned empty response"
-            exit 1
-          fi
+  - name: Fetch repositories
+    run: |
+      set -e
 
-          jq -r '
-            sort_by(.pushed_at) | reverse
-            | map(select(.fork == false))
-            | .[:5]
-            | .[]
-            | "- [" + .name + "](" + .html_url + "): " + (.description // "No description")
-          ' repos.json > projects.txt
+      curl -s https://api.github.com/users/kasi8112/repos -o repos.json
 
-      - name: Update README
-        run: |
-          set -e
-          awk '
-          /<!--START_PROJECTS-->/ {
-- [Kasi8112](https://github.com/Kasi8112/Kasi8112): No description
-- [AVR-Projects](https://github.com/Kasi8112/AVR-Projects): Contains the projects developed using AVR microcontrollers
-            print;
-            while ((getline line < "projects.txt") > 0) print line;
-            next
-          }
-          /<!--END_PROJECTS-->/ {print; next}
-          {print}
-          ' README.md > new.md
-
-          mv new.md README.md
-
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add README.md
-          git commit -m "Auto update projects" || echo "No changes"
-          git push          )
+      jq -r '
+        sort_by(.pushed_at)
+        | reverse
+        | map(select(.fork == false))
+        | (
+            map(select(.name != "kasi8112"))[:5]
+            + map(select(.name == "kasi8112"))
+          )
         | unique_by(.name)
         | .[]
-        | "- [" + .name + "](" + .html_url + "): " + (.description // "No description")
+        | "- " + .name + ": " + (.description // "No description")
       ' repos.json > projects.txt
 
-  - name: Update README section
+  - name: Update README
     run: |
-      awk '
-      BEGIN {inside=0}
+      python3 << 'EOF'
+      import re
 
-      /<!--START_PROJECTS-->/ {
-- [AVR-Projects](https://github.com/Kasi8112/AVR-Projects): Contains the projects developed using AVR microcontrollers
-- [Kasi8112](https://github.com/Kasi8112/Kasi8112): Dashboard
-        print
-        while ((getline line < "projects.txt") > 0)
-          print line
-        inside=1
-        next
-      }
+      with open("README.md", "r", encoding="utf-8") as f:
+          content = f.read()
 
-      /<!--END_PROJECTS-->/ {
-        inside=0
-        print
-        next
-      }
+      with open("projects.txt", "r", encoding="utf-8") as f:
+          projects = f.read().strip()
 
-      !inside {
-        print
-      }
-      ' README.md > temp.md
+      pattern = r"(<!--START_PROJECTS-->)(.*?)(<!--END_PROJECTS-->)"
 
-      mv temp.md README.md
+      replacement = f"\\1\n{projects}\n\\3"
+
+      updated = re.sub(pattern, replacement, content, flags=re.S)
+
+      with open("README.md", "w", encoding="utf-8") as f:
+          f.write(updated)
+      EOF
 
   - name: Commit changes
     run: |
