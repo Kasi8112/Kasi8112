@@ -9,19 +9,24 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
+
       - name: Fetch repos
         run: |
           set -e
           curl -s https://api.github.com/users/kasi8112/repos -o repos.json
+
           if [ ! -s repos.json ]; then
             echo "API returned empty response"
             exit 1
           fi
+
           jq -r '
             sort_by(.pushed_at) | reverse
             | map(select(.fork == false))
@@ -33,11 +38,14 @@ jobs:
             | .[]
             | "- [" + .name + "](" + .html_url + "): " + (.description // "No description")
           ' repos.json > projects.txt
+
       - name: Update README
         run: |
           set -e
+
           START="<!--START_PROJECTS-->"
           END="<!--END_PROJECTS-->"
+
           awk -v start="$START" -v end="$END" '
           $0 ~ start {
               print
@@ -53,7 +61,9 @@ jobs:
           }
           !skip
           ' README.md > new.md
+
           mv new.md README.md
+
       - name: Commit changes
         run: |
           git config user.name "github-actions"
