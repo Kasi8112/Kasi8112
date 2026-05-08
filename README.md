@@ -1,79 +1,55 @@
-name: Update README Projects
+# Kasi
 
-on:
-push:
-schedule:
-- cron: "0 */6 * * *"
-workflow_dispatch:
+## Tech Stack
 
-jobs:
-update:
-runs-on: ubuntu-latest
+<p align="center">
+  <img src="https://img.shields.io/badge/C-00599C?style=flat&logo=c&logoColor=white" height="44"/>
+  <img src="https://img.shields.io/badge/C++-00599C?style=flat&logo=cpp&logoColor=white" height="44"/>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" height="44"/>
+  <img src="https://img.shields.io/badge/Arduino-00979D?style=flat&logo=arduino&logoColor=white" height="44"/>
+  <img src="https://img.shields.io/badge/AVR-000000?style=flat" height="44"/>
+  <img src="https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=flat&logo=raspberrypi&logoColor=white" height="44"/>
+  <img src="https://img.shields.io/badge/Blender-F5792A?style=flat&logo=blender&logoColor=white" height="44"/>
+  <img src="https://img.shields.io/badge/Fusion%20360-FF6C00?style=flat&logo=autodesk&logoColor=white" height="44"/>
+  <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white" height="44"/>
+</p>
 
-```
-permissions:
-  contents: write
+---
 
-steps:
-  - name: Checkout
-    uses: actions/checkout@v4
+## GitHub Stats
 
-  - name: Install jq
-    run: sudo apt-get update && sudo apt-get install -y jq
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=kasi8112&show_icons=true&theme=github_dark&hide_border=true&border_radius=12" height="160"/>
+  <img src="https://streak-stats.demolab.com?user=kasi8112&theme=github-dark&hide_border=true&border_radius=12" height="160"/>
+</p>
 
-  - name: Fetch repos
-    run: |
-      set -e
-      curl -s https://api.github.com/users/kasi8112/repos -o repos.json
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=kasi8112&layout=compact&theme=github_dark&hide_border=true&border_radius=12" height="140"/>
+</p>
 
-      if [ ! -s repos.json ]; then
-        echo "API returned empty response"
-        exit 1
-      fi
+---
 
-      jq -r '
-        sort_by(.pushed_at) | reverse
-        | map(select(.fork == false))
-        | (
-            map(select(.name != "Kasi8112"))[:5]
-            + map(select(.name == "Kasi8112"))
-          )
-        | unique_by(.name)
-        | .[]
-        | "- [" + .name + "](" + .html_url + "): " + (.description // "No description")
-      ' repos.json > projects.txt
+## Activity
 
-  - name: Update README
-    run: |
-      python3 << 'EOF'
-      import re
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=kasi8112&theme=github-dark&hide_border=true" />
+</p>
 
-      with open("README.md", "r", encoding="utf-8") as f:
-          content = f.read()
+---
 
-      with open("projects.txt", "r", encoding="utf-8") as f:
-          projects = f.read().strip()
+## Projects
+<!--START_PROJECTS-->
+- Loading projects...
+<!--END_PROJECTS-->
 
-      updated = re.sub(
-          r"(<!--START_PROJECTS-->)(.*?)(<!--END_PROJECTS-->)",
-          r"\1\n" + projects + r"\n\3",
-          content,
-          flags=re.S
-      )
+---
 
-      with open("README.md", "w", encoding="utf-8") as f:
-          f.write(updated)
-      EOF
+## Focus
+- Embedded systems  
+- Low-level programming  
+- Hardware-software integration  
 
-  - name: Commit changes
-    run: |
-      git config user.name "github-actions"
-      git config user.email "actions@github.com"
+---
 
-      git add README.md
-
-      git diff --cached --quiet || git commit -m "Auto update projects"
-
-      git push
-```
-
+## Philosophy
+> "He who has a why to live can bear almost any how."
