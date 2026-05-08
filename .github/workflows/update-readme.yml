@@ -23,7 +23,7 @@ jobs:
       - name: Fetch repos
         run: |
           set -e
-          curl -s https://api.github.com/users/kasi8112/repos -o repos.json
+          curl -s https://api.github.com/users/Kasi8112/repos -o repos.json
 
           if [ ! -s repos.json ]; then
             echo "API returned empty response"
