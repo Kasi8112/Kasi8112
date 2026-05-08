@@ -1,69 +1,63 @@
-# Kasi
+name: Update README Projects
 
-## Tech Stack
+on:
+  push:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
 
-<p align="center">
-  <img src="https://img.shields.io/badge/C-00599C?style=flat&logo=c&logoColor=white" height="44"/>
-  <img src="https://img.shields.io/badge/C++-00599C?style=flat&logo=cplusplus&logoColor=white" height="44"/>
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" height="44"/>
-  <img src="https://img.shields.io/badge/Arduino-00979D?style=flat&logo=arduino&logoColor=white" height="44"/>
-  <img src="https://img.shields.io/badge/AVR-000000?style=flat" height="44"/>
-  <img src="https://img.shields.io/badge/Raspberry%20Pi-C51A4A?style=flat&logo=raspberrypi&logoColor=white" height="44"/>
-  <img src="https://img.shields.io/badge/Blender-F5792A?style=flat&logo=blender&logoColor=white" height="44"/>
-  <img src="https://img.shields.io/badge/Fusion%20360-FF6C00?style=flat&logo=autodesk&logoColor=white" height="44"/>
-  <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white" height="44"/>
-</p>
-
----
-
-## GitHub Stats
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=kasi8112&show_icons=true&theme=github_dark&hide_border=true&border_radius=12" height="160"/>
-  <img src="https://streak-stats.demolab.com?user=kasi8112&theme=github-dark&hide_border=true&border_radius=12" height="160"/>
-</p>
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=kasi8112&layout=compact&theme=github_dark&hide_border=true&border_radius=12" height="140"/>
-</p>
-
----
-
-## Activity
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=kasi8112&theme=github-dark&hide_border=true" />
-</p>
-
----
-
-## Projects
-<!--START_PROJECTS-->
-- [Kasi8112](https://github.com/Kasi8112/Kasi8112): No description
-- [AVR-Projects](https://github.com/Kasi8112/AVR-Projects): Contains the projects developed using AVR microcontrollers
-- [Kasi8112](https://github.com/Kasi8112/Kasi8112): No description
-- [AVR-Projects](https://github.com/Kasi8112/AVR-Projects): Contains the projects developed using AVR microcontrollers
-- [Kasi8112](https://github.com/Kasi8112/Kasi8112): No description
-- [AVR-Projects](https://github.com/Kasi8112/AVR-Projects): Contains the projects developed using AVR microcontrollers
-- [Kasi8112](https://github.com/Kasi8112/Kasi8112): No description
-- [AVR-Projects](https://github.com/Kasi8112/AVR-Projects): Contains the projects developed using AVR microcontrollers
-- [Kasi8112](https://github.com/Kasi8112/Kasi8112): No description
-- [AVR-Projects](https://github.com/Kasi8112/AVR-Projects): Contains the projects developed using AVR microcontrollers
-- [Kasi8112](https://github.com/Kasi8112/Kasi8112): No description
-- [AVR-Projects](https://github.com/Kasi8112/AVR-Projects): Contains the projects developed using AVR microcontrollers
-- [Kasi8112](https://github.com/Kasi8112/Kasi8112): No description
-- [AVR-Projects](https://github.com/Kasi8112/AVR-Projects): Contains the projects developed using AVR microcontrollers
-- Loading projects...
-<!--END_PROJECTS-->
-
----
-
-## Focus
-- Embedded systems  
-- Low-level programming  
-- Hardware-software integration  
-
----
-
-## Philosophy
-> "He who has a why to live can bear almost any how."
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Fetch repos
+        run: |
+          set -e
+          curl -s https://api.github.com/users/kasi8112/repos -o repos.json
+          if [ ! -s repos.json ]; then
+            echo "API returned empty response"
+            exit 1
+          fi
+          jq -r '
+            sort_by(.pushed_at) | reverse
+            | map(select(.fork == false))
+            | (
+                map(select(.name != "kasi8112"))[:5]
+                + map(select(.name == "kasi8112"))
+              )
+            | unique_by(.name)
+            | .[]
+            | "- [" + .name + "](" + .html_url + "): " + (.description // "No description")
+          ' repos.json > projects.txt
+      - name: Update README
+        run: |
+          set -e
+          START="<!--START_PROJECTS-->"
+          END="<!--END_PROJECTS-->"
+          awk -v start="$START" -v end="$END" '
+          $0 ~ start {
+              print
+              while ((getline line < "projects.txt") > 0)
+                  print line
+              skip=1
+              next
+          }
+          $0 ~ end {
+              skip=0
+              print
+              next
+          }
+          !skip
+          ' README.md > new.md
+          mv new.md README.md
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add README.md
+          git commit -m "Auto update projects" || echo "No changes"
+          git push
