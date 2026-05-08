@@ -9,7 +9,7 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,8 +44,6 @@ jobs:
           set -e
 
           START="<!--START_PROJECTS-->"
-- [Kasi8112](https://github.com/Kasi8112/Kasi8112): No description
-- [AVR-Projects](https://github.com/Kasi8112/AVR-Projects): Contains the projects developed using AVR microcontrollers
           END="<!--END_PROJECTS-->"
 
           awk -v start="$START" -v end="$END" '
